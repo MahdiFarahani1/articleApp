@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class CostumLoading {
+class CustomLoading {
   static Widget loadCircle(BuildContext context) {
     return SpinKitRipple(
       itemBuilder: (context, index) {
         return const DecoratedBox(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.white,
+            color: Colors.grey,
           ),
         );
       },
@@ -21,7 +21,7 @@ class CostumLoading {
       itemBuilder: (context, index) {
         return const DecoratedBox(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.grey,
           ),
         );
       },
@@ -34,7 +34,7 @@ class CostumLoading {
       itemBuilder: (context, index) {
         return const DecoratedBox(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.grey,
           ),
         );
       },

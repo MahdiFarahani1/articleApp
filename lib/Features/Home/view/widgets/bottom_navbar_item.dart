@@ -15,7 +15,7 @@ class NavBarItem extends StatelessWidget {
         child: Card(
             margin: const EdgeInsets.all(0),
             elevation: 6,
-            color: Theme.of(context).primaryColor.withAlpha(60),
+            color: Theme.of(context).primaryColor,
             shape: const CircleBorder(),
             child: Icon(
               iconData,
