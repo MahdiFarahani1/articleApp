@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Core/extensions/ex.dart';
 import 'package:flutter_application_1/Core/utils/loading.dart';
+import 'package:flutter_application_1/Core/widgets/CommonItem.dart';
 
 class CommonList extends StatelessWidget {
   final Future<List<Map<String, dynamic>>> future;
@@ -24,20 +24,13 @@ class CommonList extends StatelessWidget {
             itemCount: data.length,
             itemBuilder: (context, index) {
               Map<String, dynamic> item = data[index];
-              return Card(
-                margin:
-                    const EdgeInsets.only(top: 2, bottom: 4, right: 8, left: 8),
-                elevation: 5,
-                child: ListTile(
-                  title: Text(
-                    item['title'].toString().limitedTitle(),
-                    maxLines: 1,
-                  ),
+              return InkWell(
                   onTap: () {
                     onPress(item["id"], item["title"], item["_text"]);
                   },
-                ),
-              );
+                  child: CommonItem(
+                    title: item["title"],
+                  ));
             },
           );
         }

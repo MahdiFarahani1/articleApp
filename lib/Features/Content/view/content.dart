@@ -1,18 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/Core/database/db_helper.dart';
 import 'package:flutter_application_1/Features/Content/view/widgets/card_icon.dart';
 import 'package:flutter_application_1/Features/Home/getx/pageview_controller.getx.dart';
 import 'package:flutter_application_1/Features/Home/view/home.dart';
 import 'package:flutter_application_1/Features/Settings/getx/setting_controller.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Content extends StatelessWidget {
+// ignore: must_be_immutable
+class Content extends StatefulWidget {
   final String content;
   final String title;
-  Content({super.key, required this.content, required this.title});
+  final int id;
+  const Content(
+      {super.key,
+      required this.content,
+      required this.title,
+      required this.id});
 
+  @override
+  State<Content> createState() => _ContentState();
+}
+
+class _ContentState extends State<Content> {
   final settingController = Get.put(SettingController());
+
   final pageViewControllerGetx = Get.put(PageViewControllerGetx());
+
+  final GetStorage box = GetStorage();
+
+  bool isSave = false;
+  @override
+  void initState() {
+    isSave = box.read(widget.title) ?? false;
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +47,15 @@ class Content extends StatelessWidget {
         slivers: [
           SliverAppBar(
             actions: [
-              title.length < 40
+              widget.title.length < 40
                   ? Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        title,
-                        style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                        widget.title,
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.onBackground,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
                       ),
                     )
                   : const SizedBox()
@@ -64,10 +92,30 @@ class Content extends StatelessWidget {
                         Get.back();
                       },
                     ),
-                    CardIcon(
-                      iconData: Icons.star,
-                      onPress: () {},
-                    ),
+                    StatefulBuilder(builder: (context, setStateSave) {
+                      return CardIcon(
+                        iconData: isSave ? Icons.star : FontAwesomeIcons.star,
+                        onPress: () {
+                          DBhelper dBhelper = DBhelper();
+                          isSave = !isSave;
+                          box.write(widget.title, isSave);
+                          if (isSave) {
+                            dBhelper.insertArticle(
+                                id: widget.id,
+                                title: widget.title,
+                                text: widget.content);
+                          } else {
+                            dBhelper.deleteArticle(
+                              id: widget.id,
+                            );
+                          }
+
+                          setStateSave(
+                            () {},
+                          );
+                        },
+                      );
+                    }),
                   ],
                 )),
           ),
@@ -78,14 +126,16 @@ class Content extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: Column(
                   children: [
-                    title.length > 40
+                    widget.title.length > 40
                         ? Padding(
                             padding: const EdgeInsets.only(top: 20, bottom: 20),
                             child: Text(
-                              title,
-                              style: const TextStyle(
+                              widget.title,
+                              style: TextStyle(
                                   fontSize: 18,
-                                  color: Colors.black,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onBackground,
                                   fontWeight: FontWeight.bold),
                               textAlign: TextAlign.justify,
                             ),
@@ -94,7 +144,7 @@ class Content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                       child: Obx(() => Text(
-                            content,
+                            widget.content,
                             style: TextStyle(
                                 fontSize: settingController.textFontSize.value,
                                 color: Color(settingController.color.value),

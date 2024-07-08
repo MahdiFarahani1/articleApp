@@ -28,6 +28,7 @@ class ArticleList1 extends StatelessWidget {
                 Content(
                   content: content!,
                   title: title!,
+                  id: id,
                 ),
                 transition: Transition.fade);
           },

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/Features/Search/getx/Search_controller.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -55,10 +56,24 @@ class DBhelper {
     return db.query('articles', where: 'id = ?', whereArgs: [id]);
   }
 
-  Future<List<Map<String, dynamic>>> getSearch(String query) async {
+  Future<List<Map<String, dynamic>>> getSearch(String textSearch,
+      {required SearchEnum searchEnum}) async {
     Database db = await initDb();
-    return db.rawQuery("SELECT * FROM articles WHERE _text LIKE '%$query%'");
-    // return db.query('articles', where: 'title LIKE ?', whereArgs: ['%$query%']);
+    String query = "SELECT * FROM book_text WHERE _text LIKE '%$textSearch%'";
+    switch (searchEnum) {
+      case SearchEnum.title:
+        query = "SELECT * FROM book_text WHERE title LIKE '%$textSearch%'";
+
+        break;
+      case SearchEnum.content:
+        query = "SELECT * FROM book_text WHERE _text LIKE '%$textSearch%'";
+
+      case SearchEnum.both:
+        query =
+            "SELECT * FROM book_text WHERE title LIKE '%$textSearch%' OR _text LIKE '%$textSearch%'";
+      default:
+    }
+    return db.rawQuery(query);
   }
 
   Future<List<Map<String, dynamic>>> getAllsave() async {
@@ -68,12 +83,19 @@ class DBhelper {
     );
   }
 
+  Stream<List<Map<String, dynamic>>> getAllsaveStream() async* {
+    while (true) {
+      await Future.delayed(const Duration(seconds: 1));
+      yield await getAllsave();
+    }
+  }
+
   insertArticle(
-      {required String title, required int id, required int groupId}) async {
+      {required String title, required int id, required String text}) async {
     Database db = await initDb();
     db.insert("bookmark", {
       "id": id,
-      "groupId": groupId,
+      "_text": text,
       "title": title,
     });
   }

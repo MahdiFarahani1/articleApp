@@ -27,8 +27,8 @@ class _MyHomePageState extends State<MyHomePage>
 
     final List<Widget> pageWidgets = [
       ArticleCatsPage(),
-      const SearchPage(),
-      const FavoritePage(),
+      SearchPage(),
+      FavoritePage(),
       const AboutPage(),
       const Settings()
     ];

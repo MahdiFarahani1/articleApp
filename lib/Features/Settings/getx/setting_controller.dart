@@ -18,6 +18,11 @@ class SettingController extends GetxController {
 
   changeDarkMode(bool value) {
     isDarkMode.value = value;
+    if (isDarkMode.value) {
+      color = Colors.white.value.obs;
+    } else {
+      color = Colors.black.value.obs;
+    }
     saveSettings();
 
     update();
