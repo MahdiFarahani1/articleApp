@@ -63,7 +63,6 @@ dependencies:
   flutter_colorpicker: ^1.1.0
   drop_shadow: ^0.1.0
   google_fonts: ^6.2.1
-  lottie: ^3.1.2
 
 dev_dependencies:
   flutter_test:
@@ -90,7 +89,6 @@ flutter:
   assets:
     - assets/images/
     - assets/database/db.sqlite
-    - assets/lottie/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

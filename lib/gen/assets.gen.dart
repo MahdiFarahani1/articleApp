@@ -17,20 +17,8 @@ class $AssetsDatabaseGen {
   List<String> get values => [db];
 }
 
-class $AssetsLottieGen {
-  const $AssetsLottieGen();
-
-  /// File path: assets/lottie/Animation - 1720430531744.json
-  String get animation1720430531744 =>
-      'assets/lottie/Animation - 1720430531744.json';
-
-  /// List of all assets
-  List<String> get values => [animation1720430531744];
-}
-
 class Assets {
   Assets._();
 
   static const $AssetsDatabaseGen database = $AssetsDatabaseGen();
-  static const $AssetsLottieGen lottie = $AssetsLottieGen();
 }

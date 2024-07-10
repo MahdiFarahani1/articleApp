@@ -34,7 +34,7 @@ class CommonItem extends StatelessWidget {
                 fontSize: 13,
               ),
             ),
-            Icon(Icons.keyboard_arrow_left_outlined)
+            const Icon(Icons.keyboard_arrow_left_outlined)
           ],
         ),
       ),

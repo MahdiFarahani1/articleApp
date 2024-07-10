@@ -8,7 +8,8 @@ class SettingController extends GetxController {
   RxString textFontFamily = "Readex Pro".obs;
   RxDouble familyValue = 0.0.obs;
   RxInt color = Colors.black.value.obs;
-  RxBool isDarkMode = ThemeMode.system == ThemeMode.dark ? true.obs : false.obs;
+  RxBool isDarkMode =
+      (ThemeMode.system == ThemeMode.dark) ? true.obs : false.obs;
 
   @override
   void onInit() {

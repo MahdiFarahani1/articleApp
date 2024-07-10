@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Core/extensions/ex.dart';
 import 'package:flutter_application_1/Core/widgets/CommonItem.dart';
 import 'package:flutter_application_1/Features/Content/view/widgets/card_icon.dart';
-import 'package:flutter_application_1/gen/assets.gen.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/Features/Content/view/content.dart';
 import 'package:flutter_application_1/Features/Search/getx/Search_controller.dart';
-import 'package:lottie/lottie.dart';
 
 // ignore: must_be_immutable
 class SearchPage extends StatelessWidget {
@@ -148,8 +145,29 @@ class SearchPage extends StatelessWidget {
                       ),
                     )
                   : Expanded(
-                      child:
-                          Lottie.asset(Assets.lottie.animation1720430531744)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                border: const Border(
+                                    bottom: BorderSide(
+                                        width: 0.5, color: Colors.grey),
+                                    right: BorderSide(
+                                        width: 0.5, color: Colors.grey)),
+                                borderRadius: BorderRadius.circular(8)),
+                            child: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                "لا توجد نتيجة",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
             ),
           ],
         ),
