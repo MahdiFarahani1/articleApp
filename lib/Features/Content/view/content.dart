@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Core/database/db_helper.dart';
 import 'package:flutter_application_1/Features/Content/view/widgets/card_icon.dart';
 import 'package:flutter_application_1/Features/Home/getx/pageview_controller.getx.dart';
 import 'package:flutter_application_1/Features/Home/view/home.dart';
 import 'package:flutter_application_1/Features/Settings/getx/setting_controller.dart';
+import 'package:flutter_application_1/gen/assets.gen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -80,20 +80,20 @@ class _ContentState extends State<Content> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CardIcon(
-                      iconData: Icons.home,
-                      onPress: () {
+image: Assets.images.houseChimney.path,                      onPress: () {
                         Get.offAll(const MyHomePage(),
                             transition: Transition.fade);
                       },
                     ),
                     CardIcon(
-                      iconData: Icons.list,
+                      image:Assets.images.yellowList.path ,
                       onPress: () {
                         Get.back();
                       },
                     ),
                     StatefulBuilder(builder: (context, setStateSave) {
                       return CardIcon(
+                        image: isSave ? Assets.images.starEmpty.path :Assets.images.starFull.path,
                         iconData: isSave ? Icons.star : FontAwesomeIcons.star,
                         onPress: () {
                           DBhelper dBhelper = DBhelper();

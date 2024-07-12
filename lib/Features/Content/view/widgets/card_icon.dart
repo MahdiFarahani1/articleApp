@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Core/utils/gr.dart';
 
 class CardIcon extends StatelessWidget {
-  final IconData iconData;
+  final IconData? iconData;
   final VoidCallback onPress;
-  const CardIcon({super.key, required this.iconData, required this.onPress});
+  final String? image;
+  const CardIcon({super.key,  this.iconData, required this.onPress,this.image });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class CardIcon extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Icon(iconData),
+            child: image ==null ? Icon(iconData) : Image.asset(image!,width: 20,height: 20,),
           ),
         ),
       ),

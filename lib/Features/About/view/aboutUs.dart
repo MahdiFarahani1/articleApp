@@ -10,6 +10,7 @@ class AboutPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
             Card(
               margin: EdgeInsets.all(12),
               child: Padding(

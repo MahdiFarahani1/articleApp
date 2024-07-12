@@ -7,6 +7,7 @@ import 'package:flutter_application_1/Features/Home/getx/pageview_controller.get
 import 'package:flutter_application_1/Features/Home/view/widgets/bottom_navbar_item.dart';
 import 'package:flutter_application_1/Features/Search/view/Search.dart';
 import 'package:flutter_application_1/Features/Settings/view/settings.dart';
+import 'package:flutter_application_1/gen/assets.gen.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -55,21 +56,21 @@ class _MyHomePageState extends State<MyHomePage>
               backgroundColor: Theme.of(context).primaryColor,
               color: Theme.of(context).colorScheme.outlineVariant,
               height: 70,
-              items: const <Widget>[
+              items:  <Widget>[
                 NavBarItem(
-                  iconData: Icons.list_rounded,
+              image: Assets.images.listTimeline.path,
                 ),
                 NavBarItem(
-                  iconData: Icons.search,
+              image: Assets.images.searchAlt.path,
                 ),
                 NavBarItem(
-                  iconData: Icons.star,
+              image: Assets.images.wishlistStar.path,
                 ),
                 NavBarItem(
-                  iconData: Icons.newspaper,
+              image: Assets.images.info.path,
                 ),
                 NavBarItem(
-                  iconData: Icons.settings,
+              image: Assets.images.settings.path,
                 ),
               ],
               onTap: (index) {
