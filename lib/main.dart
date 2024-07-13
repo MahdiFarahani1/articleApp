@@ -4,9 +4,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
@@ -17,7 +14,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  
   Widget build(BuildContext context) {
     final box = GetStorage();
     return GetMaterialApp(
@@ -36,14 +32,11 @@ class MyApp extends StatelessWidget {
           primary: const Color(0xFFB0BEC5), // Grey 400
           surfaceTint: const Color(0xFFB0BEC5), // Grey 400
 
-
           onPrimary: Colors.black,
           primaryContainer: const Color(0xFF424242), // Grey 800
 
-
           onPrimaryContainer: Colors.white,
           secondary: const Color(0xFFB0BEC5), // Grey 400
-
 
           onSecondary: Colors.black,
           secondaryContainer: const Color(0xFF424242), // Grey 800
@@ -59,16 +52,12 @@ class MyApp extends StatelessWidget {
           surface: const Color(0xFF303030), // Dark
           onSurface: const Color(0xFFFFFFFF), // White
 
-
-
           onSurfaceVariant: const Color(0xFFB0BEC5), // Grey 400
           surfaceVariant: Colors.white,
           outline: const Color(0xFFB0BEC5), // Blue Grey 200
           outlineVariant: Colors.blueGrey.shade700, // Blue Grey 400
           shadow: const Color(0xFFFFFFFF), // White
           scrim: const Color(0xFFFFFFFF), // White
-
-
 
           inverseSurface: const Color(0xFFB0BEC5), // Grey 400
           inversePrimary: const Color(0xFFE0E0E0), // Grey 300
@@ -90,7 +79,6 @@ class MyApp extends StatelessWidget {
           color: Color.fromRGBO(200, 175, 110, 1.0), // Custom RGB color
         ),
       ),
-
       theme: ThemeData(
         fontFamily: GoogleFonts.getFont("Readex Pro").fontFamily,
         scaffoldBackgroundColor: const Color(0xFFFFFFFF), // White

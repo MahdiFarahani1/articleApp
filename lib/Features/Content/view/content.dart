@@ -5,7 +5,6 @@ import 'package:flutter_application_1/Features/Home/getx/pageview_controller.get
 import 'package:flutter_application_1/Features/Home/view/home.dart';
 import 'package:flutter_application_1/Features/Settings/getx/setting_controller.dart';
 import 'package:flutter_application_1/gen/assets.gen.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -80,21 +79,23 @@ class _ContentState extends State<Content> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CardIcon(
-image: Assets.images.houseChimney.path,                      onPress: () {
+                      image: Assets.images.houseChimney.path,
+                      onPress: () {
                         Get.offAll(const MyHomePage(),
                             transition: Transition.fade);
                       },
                     ),
                     CardIcon(
-                      image:Assets.images.yellowList.path ,
+                      image: Assets.images.yellowList.path,
                       onPress: () {
                         Get.back();
                       },
                     ),
                     StatefulBuilder(builder: (context, setStateSave) {
                       return CardIcon(
-                        image: isSave ? Assets.images.starEmpty.path :Assets.images.starFull.path,
-                        iconData: isSave ? Icons.star : FontAwesomeIcons.star,
+                        image: !isSave
+                            ? Assets.images.starEmpty.path
+                            : Assets.images.starFull.path,
                         onPress: () {
                           DBhelper dBhelper = DBhelper();
                           isSave = !isSave;
