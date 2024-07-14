@@ -4,6 +4,7 @@ import 'package:flutter_application_1/Features/About/view/aboutUs.dart';
 import 'package:flutter_application_1/Features/Articels/view/Articels_cats.dart';
 import 'package:flutter_application_1/Features/Favorite/view/favorite.dart';
 import 'package:flutter_application_1/Features/Home/getx/pageview_controller.getx.dart';
+import 'package:flutter_application_1/Features/Home/view/gallery.dart';
 import 'package:flutter_application_1/Features/Home/view/widgets/bottom_navbar_item.dart';
 import 'package:flutter_application_1/Features/Search/view/Search.dart';
 import 'package:flutter_application_1/Features/Settings/view/settings.dart';
@@ -30,6 +31,7 @@ class _MyHomePageState extends State<MyHomePage>
       ArticleCatsPage(),
       SearchPage(),
       FavoritePage(),
+      Gallery(),
       const AboutPage(),
       const Settings()
     ];
@@ -41,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage>
             onPageChanged: (value) {
               pageViewControllerGetx.changeIndex(value);
             },
-            itemCount: 5,
+            itemCount: 6,
             controller: pageViewControllerGetx.pageController,
             itemBuilder: (context, index) {
               return pageWidgets[index];
@@ -56,21 +58,24 @@ class _MyHomePageState extends State<MyHomePage>
               backgroundColor: Theme.of(context).primaryColor,
               color: Theme.of(context).colorScheme.outlineVariant,
               height: 70,
-              items:  <Widget>[
+              items: <Widget>[
                 NavBarItem(
-              image: Assets.images.listTimeline.path,
+                  image: Assets.images.listTimeline.path,
                 ),
                 NavBarItem(
-              image: Assets.images.searchAlt.path,
+                  image: Assets.images.searchAlt.path,
                 ),
                 NavBarItem(
-              image: Assets.images.wishlistStar.path,
+                  image: Assets.images.wishlistStar.path,
                 ),
                 NavBarItem(
-              image: Assets.images.info.path,
+                  image: Assets.images.copyImage.path,
                 ),
                 NavBarItem(
-              image: Assets.images.settings.path,
+                  image: Assets.images.info.path,
+                ),
+                NavBarItem(
+                  image: Assets.images.settings.path,
                 ),
               ],
               onTap: (index) {

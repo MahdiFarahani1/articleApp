@@ -45,6 +45,11 @@ class _ContentState extends State<Content> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            leading: GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
+                child: Image.asset(Assets.images.back.path)), 
             actions: [
               widget.title.length < 40
                   ? Padding(

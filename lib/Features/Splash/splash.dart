@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Core/utils/esay_size.dart';
 import 'package:flutter_application_1/Features/Home/view/home.dart';
+import 'package:flutter_application_1/gen/assets.gen.dart';
 import 'package:get/get.dart';
 
 class Splash extends StatefulWidget {
@@ -25,9 +27,14 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Splash"),
+    return Scaffold(
+      body: SizedBox(
+        width: EsaySize.width(context),
+        height: EsaySize.height(context),
+        child: Image.asset(
+          Assets.images.splash.path,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

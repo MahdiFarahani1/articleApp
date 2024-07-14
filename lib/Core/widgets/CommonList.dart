@@ -20,18 +20,21 @@ class CommonList extends StatelessWidget {
           return const Center(child: Text('No Data Found'));
         } else {
           List<Map<String, dynamic>> data = snapshot.data!;
-          return ListView.builder(
-            itemCount: data.length,
-            itemBuilder: (context, index) {
-              Map<String, dynamic> item = data[index];
-              return InkWell(
-                  onTap: () {
-                    onPress(item["id"], item["title"], item["_text"]);
-                  },
-                  child: CommonItem(
-                    title: item["title"],
-                  ));
-            },
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: ListView.builder(
+              itemCount: data.length,
+              itemBuilder: (context, index) {
+                Map<String, dynamic> item = data[index];
+                return InkWell(
+                    onTap: () {
+                      onPress(item["id"], item["title"], item["_text"]);
+                    },
+                    child: CommonItem(
+                      title: item["title"],
+                    ));
+              },
+            ),
           );
         }
       },

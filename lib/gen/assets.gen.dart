@@ -22,6 +22,13 @@ class $AssetsDatabaseGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/back.png
+  AssetGenImage get back => const AssetGenImage('assets/images/back.png');
+
+  /// File path: assets/images/copy-image.png
+  AssetGenImage get copyImage =>
+      const AssetGenImage('assets/images/copy-image.png');
+
   /// File path: assets/images/house-chimney.png
   AssetGenImage get houseChimney =>
       const AssetGenImage('assets/images/house-chimney.png');
@@ -41,6 +48,9 @@ class $AssetsImagesGen {
   AssetGenImage get settings =>
       const AssetGenImage('assets/images/settings.png');
 
+  /// File path: assets/images/splash.jpg
+  AssetGenImage get splash => const AssetGenImage('assets/images/splash.jpg');
+
   /// File path: assets/images/star_empty.png
   AssetGenImage get starEmpty =>
       const AssetGenImage('assets/images/star_empty.png');
@@ -59,11 +69,14 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        back,
+        copyImage,
         houseChimney,
         info,
         listTimeline,
         searchAlt,
         settings,
+        splash,
         starEmpty,
         starFull,
         wishlistStar,
@@ -79,16 +92,9 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  });
+  const AssetGenImage(this._assetName);
 
   final String _assetName;
-
-  final Size? size;
-  final Set<String> flavors;
 
   Image image({
     Key? key,

@@ -121,27 +121,30 @@ class SearchPage extends StatelessWidget {
             Obx(
               () => controllerSearch.resultSearch.isNotEmpty
                   ? Expanded(
-                      child: ListView.builder(
-                        itemCount: controllerSearch.resultSearch.length,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                              onTap: () {
-                                Get.to(
-                                    Content(
-                                        content: controllerSearch
-                                            .resultSearch[index]["_text"],
-                                        title: controllerSearch
-                                            .resultSearch[index]["title"],
-                                        id: controllerSearch.resultSearch[index]
-                                            ["id"]),
-                                    transition: Transition.fade);
-                              },
-                              borderRadius: BorderRadius.circular(8),
-                              child: CommonItem(
-                                title: controllerSearch.resultSearch[index]
-                                    ["title"],
-                              ));
-                        },
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 50),
+                        child: ListView.builder(
+                          itemCount: controllerSearch.resultSearch.length,
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                                onTap: () {
+                                  Get.to(
+                                      Content(
+                                          content: controllerSearch
+                                              .resultSearch[index]["_text"],
+                                          title: controllerSearch
+                                              .resultSearch[index]["title"],
+                                          id: controllerSearch
+                                              .resultSearch[index]["id"]),
+                                      transition: Transition.fade);
+                                },
+                                borderRadius: BorderRadius.circular(8),
+                                child: CommonItem(
+                                  title: controllerSearch.resultSearch[index]
+                                      ["title"],
+                                ));
+                          },
+                        ),
                       ),
                     )
                   : Expanded(

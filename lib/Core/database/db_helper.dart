@@ -29,7 +29,7 @@ class DBhelper {
   Future<List<Map<String, dynamic>>> getCat() async {
     Database db = await initDb();
     return db.query(
-      'books',
+      'articlesgroups',
     );
   }
 
@@ -38,8 +38,8 @@ class DBhelper {
 
     // Query the articlesgroups table
     List<Map<String, dynamic>> articleGroups = await db.query(
-      'book_text',
-      where: 'bid = ?',
+      'articles',
+      where: 'groupId = ?',
       whereArgs: [id],
     );
 
@@ -59,18 +59,18 @@ class DBhelper {
   Future<List<Map<String, dynamic>>> getSearch(String textSearch,
       {required SearchEnum searchEnum}) async {
     Database db = await initDb();
-    String query = "SELECT * FROM book_text WHERE _text LIKE '%$textSearch%'";
+    String query = "SELECT * FROM articles WHERE _text LIKE '%$textSearch%'";
     switch (searchEnum) {
       case SearchEnum.title:
-        query = "SELECT * FROM book_text WHERE title LIKE '%$textSearch%'";
+        query = "SELECT * FROM articles WHERE title LIKE '%$textSearch%'";
 
         break;
       case SearchEnum.content:
-        query = "SELECT * FROM book_text WHERE _text LIKE '%$textSearch%'";
+        query = "SELECT * FROM articles WHERE _text LIKE '%$textSearch%'";
 
       case SearchEnum.both:
         query =
-            "SELECT * FROM book_text WHERE title LIKE '%$textSearch%' OR _text LIKE '%$textSearch%'";
+            "SELECT * FROM articles WHERE title LIKE '%$textSearch%' OR _text LIKE '%$textSearch%'";
       default:
     }
     return db.rawQuery(query);
